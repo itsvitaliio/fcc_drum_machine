@@ -1,13 +1,183 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  align-items: center;
+  align-self: center;
+  width: 100vw;
+  height: 100vh;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #DB7093;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container {
+  display: grid;
+  grid-template-rows: auto auto;
+  text-align: center;
+  border: .1vh solid navy;
+  grid-gap: 1rem;
+  background-color: #FF69B4;
+  border-radius: 6vh;
+  padding: 10% 0;
+  width: 90vw;
+}
+
+.container-disabled {
+  border-color: navy;
+}
+
+.drumpad-container {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  margin: 0;
+  grid-gap: 5%;
+}
+
+.drum-pad, .drum-pad:visited {
+  width: 12.5vh;
+  height: 12.5vh;
+  margin: auto;
+  border: none;
+  outline: none;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: #FFB6C1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red;
+  font-size: 2rem;
+}
+
+.drum-pad:disabled {
+  background: skyblue;
+  box-shadow: none;
+  color: navy;
+}
+
+.drum-pad:active,
+.drum-pad--active {
+  background-color: navy;
+  transform: translateY(0.1rem);
+}
+
+.label{
+  margin: 5%;
+}
+
+.border-radius {
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  margin: 2.5%;
+  width: 10vh;
+  height: 5.5vh;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: red;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: skyblue;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 0.1em skyblue;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(1.5rem);
+  -ms-transform: translateX(1.5rem);
+  transform: translateX(1.5rem);
+}
+
+.slider.round {
+  border-radius: 2rem;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+#display {
+  background: #FFB6C1;
+  content: "";
+  width: 13rem;
+  height: 2rem;
+  padding-top: 0.3rem;
+  margin: 0 auto;
+  color: navy;
+  text-transform: capitalize;
+}
+
+#control-container div {
+  padding-bottom: 0.5rem;
+}
+
+@media screen and (orientation: landscape) {
+  .container {
+    grid-gap: 5%;
+    border-radius: 6vw;
+    padding: 7.5% 0;
+    width: 35vw;
+  }
+  
+  .drumpad-container {
+    grid-gap: 5%;
+  }
+  
+  .drum-pad, .drum-pad:visited {
+    width: 12.5vh;
+    height: 12.5vh;
+    border-radius: 6vh;
+    font-size: 4vh;
+  }
 }
